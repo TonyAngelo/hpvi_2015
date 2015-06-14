@@ -14,28 +14,11 @@ rdata2012 <- read.csv("./data/precinct_2012.csv", header=TRUE, stringsAsFactors=
 # 2012 data contains a totals row at the bottom
 rdata2012 <- rdata2012[1:nrow(rdata2012)-1,]
 
-# functions for adding a leading zero to districts without one
-formatLegDist <- function(x){
-    if(nchar(x)<3){
-        paste("0",x,sep="")
-    } else {
-        x
-    }
-}
-
-formatSenDist <- function(x){
-    if(nchar(x)<2){
-        paste("0",x,sep="")
-    } else {
-        x
-    }
-}
-
 # format the sen and leg dist column, add a leading zero to single digit districts
-rdata2014$MNLEGDIST <- sapply(rdata2014$MNLEGDIST, formatLegDist)
-rdata2012$MNLEGDIST <- sapply(rdata2012$MNLEGDIST, formatLegDist)
-rdata2014$MNSENDIST <- sapply(rdata2014$MNSENDIST, formatSenDist)
-rdata2012$MNSENDIST <- sapply(rdata2012$MNSENDIST, formatSenDist)
+rdata2014$MNLEGDIST <- sapply(rdata2014$MNLEGDIST, function(x){if(nchar(x)<3){paste("0",x,sep="")} else {x}})
+rdata2012$MNLEGDIST <- sapply(rdata2012$MNLEGDIST, function(x){if(nchar(x)<3){paste("0",x,sep="")} else {x}})
+rdata2014$MNSENDIST <- sapply(rdata2014$MNSENDIST, function(x){if(nchar(x)<2){paste("0",x,sep="")} else {x}})
+rdata2012$MNSENDIST <- sapply(rdata2012$MNSENDIST, function(x){if(nchar(x)<2){paste("0",x,sep="")} else {x}})
 
 # convert the countycode-mailballot columns to factors
 rdata2014[6:18] <- lapply(rdata2014[6:18], as.factor)

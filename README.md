@@ -9,9 +9,8 @@ Files currently in the repo:
 - data folder
     - 2014 and 2012 election results csv files
 - hPVI_2015.R (the main code block, calculates the hPVIs)
-- get_legislator_info.R (uses the OPenStates API to get legislator names, districts and party)
-- hPVI_2015_tables_plots.R (produces some tables and plots)
-- misc_scripts.R (misc scripts that were used for testing and such)
+- get_legislator_info.R (uses the OpenStates API to get legislator names, districts and party)
+- hPVI_2015_tables_plots.R (produces some tables and plots, uses variables created by "hPVI_2015.R")
 
 ### Overview
 
